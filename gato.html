@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clika no emoji</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url('https://media.tenor.com/wWX7upr7SvwAAAAM/byuntear-cat.gif');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: 'Segoe UI', sans-serif;
+
+      /* Centraliza tudo com flexbox */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white; /* para o texto ficar visível */
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+    }
+
+    .emoji {
+      font-size: 10rem;
+      animation: dance 1s infinite alternate;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    @keyframes dance {
+      0% { transform: rotate(-10deg) scale(1); }
+      100% { transform: rotate(10deg) scale(1.1); }
+    }
+
+    #botao-secreto {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      background-color: #fff;
+      color: #ff6f61;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none; /* segredo 👀 */
+      z-index: 999;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      text-decoration: none;
+    }
+
+    #botao-secreto:hover {
+      background-color: #ffe6e0;
+    }
+
+    @media (max-width: 600px) {
+      .emoji {
+        font-size: 5rem;
+      }
+
+      #botao-secreto {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="emoji" onclick="mostrarBotao()">😸</div>
+  <div class="frase"><strong>Clika no emoji, eu sei que você é meio burra, tlgd então eu tenho q explicar</strong></div>
+
+  <a id="botao-secreto" href="dedo.html">?</a>
+
+  <script>
+    function mostrarBotao() {
+      document.getElementById('botao-secreto').style.display = 'inline-block';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emoji do dedo do meio</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .title {
+      font-size: 1.8rem;
+      margin-bottom: 0;
+      margin-top: 40px;
+      z-index: 2;
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      user-select: none;
+    }
+
+    .image-container {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      margin-top: 10px;
+      margin-bottom: 60px;
+      z-index: 1;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 400px;
+      background: transparent;
+      border: none;
+      position: relative;
+      height: 50px;
+      z-index: 1;
+    }
+
+    button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      position: relative;
+    }
+
+    .btn-sim {
+      background-color: #4CAF50;
+      color: white;
+      flex: 1;
+      max-width: 150px;
+    }
+
+    .btn-sim:hover {
+      background-color: #45a049;
+    }
+
+    .btn-nao {
+      background-color: #f44336;
+      color: white;
+      max-width: 150px;
+      position: fixed;
+      top: calc(50% + 150px);
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 10;
+    }
+
+    .btn-nao:hover {
+      background-color: #d32f2f;
+    }
+
+    /* mensagem que vai aparecer */
+    #mensagem {
+      margin-top: 30px;
+      color: #4CAF50;
+      display: none;
+      user-select: none;
+      text-align: center;
+    }
+
+    #mensagem p {
+      font-size: 1.3rem;
+      margin: 0;
+    }
+
+    #mensagem img {
+      max-width: 200px;
+      margin-top: 10px;
+      user-select: none;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="title">Como eu sair qualquer dia desses?</div>
+
+  <div class="image-container">
+    <img src="https://www.pngmart.com/files/22/Emoji-Meme-PNG-Clipart.png" alt="Emoji dedo do meio" />
+  </div>
+
+  <div class="buttons-container">
+    <button class="btn-sim" id="btnSim">Sim</button>
+  </div>
+
+  <button class="btn-nao" id="btnNao">Não</button>
+
+  <div id="mensagem">
+    <p>que bom que você aceitou, manda print no zap zap</p>
+    <img src="https://i.pinimg.com/originals/34/8f/37/348f370de377080493da35e29315ccad.jpg" alt="Emojis apertando mão" />
+  </div>
+
+  <script>
+    const btnNao = document.getElementById('btnNao');
+    const btnSim = document.getElementById('btnSim');
+    const mensagem = document.getElementById('mensagem');
+
+    btnSim.addEventListener('click', () => {
+      btnSim.style.display = 'none';        // esconde botão "Sim"
+      mensagem.style.display = 'block';     // mostra mensagem com imagem
+    });
+
+    // Botão "Não" com movimento aleatório
+    function getRandomPosition(button) {
+      const btnWidth = button.offsetWidth;
+      const btnHeight = button.offsetHeight;
+      const padding = 10;
+
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+
+      const randomX = Math.floor(Math.random() * (windowWidth - btnWidth - padding * 2)) + padding;
+      const randomY = Math.floor(Math.random() * (windowHeight - btnHeight - padding * 2)) + padding;
+
+      return { x: randomX, y: randomY };
+    }
+
+    btnNao.addEventListener('mouseenter', () => {
+      const { x, y } = getRandomPosition(btnNao);
+      btnNao.style.transition = 'top 0.3s ease, left 0.3s ease';
+      btnNao.style.left = x + 'px';
+      btnNao.style.top = y + 'px';
+    });
+  </script>
+</body>
+</html>
